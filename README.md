@@ -27,4 +27,5 @@ The file app.py does 2 things:
 *Runs the scrape code and stores the results in MongoDB
 *Finds the information in MongoDB and renders it in HTML
 
-The final results is rendered in a Website.
+The final results are rendered in a Website.
+![Figure1](Images/correlation_matrix.png)
