@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mission to Mars</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='style.css') }}">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+
+
+<body>
+    {% for item in info %}  
+    <!--Container ----------------------------------------------------------->
+        <div class="container-fluid main">
+            <!-- Main Button--------------------------------------------------------->
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="jumbotron" id="main_button">
+                        <h1><b>MISSION TO MARS</b></h1>
+                        <a href="/scrape" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Scrape</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Latest News------------------------------------------------------ -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card news-card">
+                        <div class="card-header text-white bg-info .text-info">
+                            <h2><p class="font-weight-bold text-size text-white">Latest News</p></h2>
+                        </div>
+                        <div class="card-body">
+                        <blockquote class="blockquote mb-0">
+                            <p>{{ item.news_title }}</p>
+                            <footer class="blockquote-footer">{{ item.news_p }} </footer>
+                        </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Featured Image and Facts----------------------------------------------- -->
+            <br>
+            <div class="row facts">
+                 <!-- Featured Mars Image -->
+                <div class="col-md-6 text-left">
+                    <div class="card border-0">
+                        <div class="card-body">
+                          <h5 class="card-title"><p class="font-weight-bold text-info">FEATURED MARS NASA IMAGE</p></h5>
+                        </div>
+                        <img src= {{ item.featured_image_url }}  class="card-img-top" alt="Current image from JPL">
+                      </div>
+                </div>
+                <!-- Current Weather -->              
+                    <div class="col-md-6 text-left">
+                        <div class="row">
+                            <div class="col-md-12 text-left">
+                                <div class="card">
+                                    <h5 class="card-header"><p class="font-weight-bold text-info">CURRENT WEATHER ON MARS</p></h5>
+                                    <div class="card-body">      
+                                      <p class="card-text">{{ item.mars_weather }}</p>              
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <br>
+                <!-- Mars Facts ---->  
+                        <div class="row">
+                            <div class="col-md-8 text-left">
+                                <div class="card border-0">
+                                    <div class="card-header">
+                                        <h5 class="font-weight-bold text-info">MARS FACTS</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <table class="table table-striped table-borderless"> {{ item.table_html|safe}}</table>
+                                    </div>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>            
+            </div>
+            <!-- Hemisphere Images -->
+            <br>
+            <div class="row images">
+                <div class="card border-0">
+                    <div class="card-body">
+                        <h5 class="font-weight-bold text-info">MARS HEMISPHERES</h5>
+                    </div>
+                  </div>
+            </div>
+            <div class="row justify-content-center">
+                {% for hemi in item.hemisphere_image_urls %}
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                          <h5 class="card-title"><p class="font-weight-bold text-info">{{hemi.title}}</p></h5>
+                        </div>
+                        <img src="{{hemi.img_url}}" class="card-img-top" alt="Mars Hemispheres" width=70%>
+                      </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            {% endfor %}
+        
+        </div>
+    <!-- </div> -->
+
+</body>
+
+<!-- Basic Styling in case the CSS not working -->
+<style>
+    body{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    
+    }
+
+    h1{
+          color: #17a2b8 !important;
+          text-emphasis: bold;
+          margin: 5px;
+          padding-bottom: 15px;
+          
+      }
+
+      .btn-primary{
+        background: #17a2b8 !important;
+        border: #17a2b8;
+        font-size: x-large;
+      }
+    </style>
+    
+    
+      
+</html>
