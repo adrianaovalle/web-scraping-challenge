@@ -27,4 +27,4 @@ The file app.py does 2 things:
 *Runs the scrape code and stores the results in MongoDB
 *Finds the information in MongoDB and renders it in HTML
 
-The final results is a Website that renders all the results.
+The final results is rendered in a Website.
