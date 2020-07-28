@@ -28,4 +28,4 @@ The file app.py does 2 things:
 *Finds the information in MongoDB and renders it in HTML
 
 The final results are rendered in a Website.
-![Figure1](Images/correlation_matrix.png)
+![Figure1](Missions_to_Mars/Resources/results.png)
