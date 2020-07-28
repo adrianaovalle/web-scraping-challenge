@@ -19,7 +19,7 @@ Mars facts were scraped from:  https://space-facts.com/mars/
 Mars pictures of the Hemispheres were scraped from: https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars
 
 ## MongoDB and Flak Application
-###Scrape function
+### Scrape function
 The file scrape_mars.py was created based on the code written in mission_to_mars.py.
 
 ### Call MongoDB and HTML
